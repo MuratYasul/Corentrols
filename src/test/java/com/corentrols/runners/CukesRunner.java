@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features", // Path to your feature files
         glue = "com/corentrols/step_defs", // Package name where your step definitions are located
-        tags = "", // Tags to specify which scenarios to run, you can remove this if you want to run all scenarios
+        tags = "@wip", // Tags to specify which scenarios to run, you can remove this if you want to run all scenarios
         plugin = {
                 "html:target/cucumber-reports.html",
                 "json:target/json-report.json",

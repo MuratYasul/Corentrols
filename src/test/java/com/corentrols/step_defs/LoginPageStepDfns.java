@@ -32,6 +32,11 @@ public class LoginPageStepDfns {
     @Then("user should login homepage")
     public void user_should_login_homepage() {
        BrowserUtils.titleAssertion(Driver.getDriver().getTitle());
+        String actualTitle = Driver.getDriver().getTitle();
+        String expectedTitle = "Odoo";
+        Assert.assertEquals(expectedTitle, actualTitle);
+        System.out.println("actualTitle : " +actualTitle);
+        System.out.println("expectedTitle : " +expectedTitle);
 
     }
 
