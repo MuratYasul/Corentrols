@@ -7,6 +7,7 @@ import com.corentrols.utilities.ConfigurationReader;
 import com.corentrols.utilities.Driver;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 
 public class LoginPageStepDfns {
 
@@ -38,7 +39,7 @@ public class LoginPageStepDfns {
     public void user_should_login_homepage() {
        BrowserUtils.titleAssertion(Driver.getDriver().getTitle());
         String actualTitle = Driver.getDriver().getTitle();
-        String expectedTitle = "Odoo";
+        String expectedTitle = "Login | Best solution for startups";
         Assert.assertEquals(expectedTitle, actualTitle);
         System.out.println("actualTitle : " +actualTitle);
         System.out.println("expectedTitle : " +expectedTitle);
@@ -65,7 +66,18 @@ public class LoginPageStepDfns {
             Assert.assertEquals(validationMsg, loginPage.passwordInputBox.getAttribute("validationMessage"));
         }
 
+    }
+    @Then("user should see bullet signs")
+    public void user_should_see_bullet_signs() {
 
+        String bullet = loginPage.passwordInputBox.getAttribute("type");
+        System.out.println("bullet = " + bullet);
+        Assert.assertEquals(bullet, loginPage.passwordInputBox.getAttribute("type"));
+    }
+
+    @When("user click enter key of the keyboard")
+    public void user_click_enter_key_of_the_keyboard() {
+        loginPage.passwordInputBox.sendKeys(Keys.ENTER);
     }
 
 
