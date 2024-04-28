@@ -19,6 +19,7 @@ public class LoginPageStepDfns {
     }
     @When("user enter username {string} in username box")
     public void user_enter_username_in_username_box(String username) {
+        Driver.getDriver().get(ConfigurationReader.getProperty("env"));
         loginPage.emailInputBox.sendKeys(username);
     }
     @When("user enter password {string} in password box")
@@ -37,6 +38,14 @@ public class LoginPageStepDfns {
         Assert.assertEquals(expectedTitle, actualTitle);
         System.out.println("actualTitle : " +actualTitle);
         System.out.println("expectedTitle : " +expectedTitle);
+        Assert.assertTrue(homePage.inbox.isDisplayed());
+    }
+
+    @Then("user should see {string} warning message")
+    public void user_should_see_warning_message(String wrongLgnMsg) {
+        Assert.assertTrue(loginPage.wrongCredentialsMsg.isDisplayed());
+        Assert.assertEquals(wrongLgnMsg, loginPage.wrongCredentialsMsg.getText());
+        System.out.println(loginPage.wrongCredentialsMsg.getText());
 
     }
 
