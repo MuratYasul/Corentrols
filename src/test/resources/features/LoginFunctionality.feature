@@ -14,7 +14,7 @@ Feature: LoginFunctionality
       | salesmanager15@info.com | salesmanager |
       | posmanager88@info.com   | posmanager   |
 
-  @wip
+
   Scenario Outline: User can not login with invalid credentials
     When user enter username "<username>" in username box
     And user enter password "<password>" in password box
@@ -25,17 +25,17 @@ Feature: LoginFunctionality
       | salesmanager100@info.com | abscd        |
       | abcd@info.com            | salesmanager |
 
-#
-#  Scenario Outline: User should see validation message when using empty credentials
-#    When user enter username "<username>" in username box
-#    And user enter password "<password>" in password box
-#    And user click login button
-#    Then user should see "Please fill out this field." validation message
-#    Examples:
-#      | username                | password   |
-#      |                         |            |
-#      | salesmanager39@info.com |            |
-#      |                         | posmanager |
+  @wip
+  Scenario Outline: User should see validation message when using empty credentials
+    When user enter username "<username>" in username box
+    And user enter password "<password>" in password box
+    And user click login button
+    Then user should see "Please fill out this field." validation message
+    Examples:
+      | username                | password   |
+      |                         |            |
+      | salesmanager39@info.com |            |
+      |                         | posmanager |
 #
 #
 #  Scenario: User should see the bullet signs style password

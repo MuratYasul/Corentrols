@@ -13,18 +13,22 @@ public class LoginPageStepDfns {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = new HomePage();
 
+    String currentUsername, currentPassword;
+
     @Given("user on the login page")
     public void user_on_the_login_page() {
         Driver.getDriver().get(ConfigurationReader.getProperty("env"));
     }
     @When("user enter username {string} in username box")
     public void user_enter_username_in_username_box(String username) {
-        Driver.getDriver().get(ConfigurationReader.getProperty("env"));
+     //   Driver.getDriver().get(ConfigurationReader.getProperty("env"));
         loginPage.emailInputBox.sendKeys(username);
+        currentUsername = username;
     }
     @When("user enter password {string} in password box")
     public void user_enter_password_in_password_box(String password) {
        loginPage.passwordInputBox.sendKeys(password);
+       currentPassword = password;
     }
     @When("user click login button")
     public void user_click_login_button() {
@@ -46,6 +50,21 @@ public class LoginPageStepDfns {
         Assert.assertTrue(loginPage.wrongCredentialsMsg.isDisplayed());
         Assert.assertEquals(wrongLgnMsg, loginPage.wrongCredentialsMsg.getText());
         System.out.println(loginPage.wrongCredentialsMsg.getText());
+
+    }
+
+    @Then("user should see {string} validation message")
+    public void user_should_see_validation_message(String validationMsg) {
+       // String validationMessage= "Please fill out this field.";
+       // System.out.println(loginPage.emailInputBox.getAttribute("required"));
+        if (currentUsername.isEmpty()) {
+            Assert.assertNotNull(loginPage.emailInputBox.getAttribute("required"));
+            Assert.assertEquals(validationMsg, loginPage.emailInputBox.getAttribute("validationMessage"));
+        } else if (currentPassword.isEmpty()) {
+            Assert.assertNotNull(loginPage.passwordInputBox.getAttribute("required"));
+            Assert.assertEquals(validationMsg, loginPage.passwordInputBox.getAttribute("validationMessage"));
+        }
+
 
     }
 
