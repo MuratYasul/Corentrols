@@ -11,7 +11,6 @@ public class HomePage {
     }
     @FindBy(xpath = "//li[.='#Inbox']")
     public WebElement inbox;
-
     @FindBy(xpath = "//span[normalize-space()='Discuss']")
     public WebElement discussBtn;
 
@@ -104,6 +103,7 @@ public class HomePage {
 
     @FindBy(xpath = "//span[normalize-space()='Fleet']")
     public WebElement fleetBttn;
+
 
 
 
