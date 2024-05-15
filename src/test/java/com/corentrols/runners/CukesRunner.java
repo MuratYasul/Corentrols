@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 
         features = "src/test/resources/features", // Path to your feature files
         glue = "com/corentrols/step_defs", // Package name where your step definitions are located
-        tags = "@wip",
+        tags = "",
         dryRun = false// Tags to specify which scenarios to run, you can remove this if you want to run all scenarios
 
 )
